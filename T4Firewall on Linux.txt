@@ -1,0 +1,52 @@
+parrot os (Victim)
+-----------------------------
+ip a
+sudo ufw status verbose
+sudo ufw enable
+sudo ufw status verbose
+sudo ufw status numbered
+
+
+sudo ufw deny in 23/tcp
+sudo ufw status numbered
+
+sudo ufw allow in 22/tcp
+sudo ufw status
+
+
+sudo apt update
+sudo apt install openssh-server -y
+sudo systemctl start ssh
+sudo systemctl enable ssh
+
+sudo systemctl status ssh
+showing active (running).
+
+
+
+kali(Attacker)
+----------------------------
+ifconfig
+ping 10.10.10.10
+
+telnet 10.10.10.10 23
+
+ssh user@10.10.10.10
+
+ls
+
+
+parrot os (removing )
+----------------------------
+sudo ufw status numbered
+
+sudo ufw delete 1
+sudo ufw delete 3
+
+sudo ufw status
+
+
+Summary
+---------------------------------
+A host‑only network was used to isolate the attacker and victim machines. UFW was configured on the Parrot OS victim to block inbound Telnet traffic on port 23 and allow SSH on port 22. Connection attempts from the Kali attacker confirmed that Telnet was blocked while SSH access was permitted.
+
